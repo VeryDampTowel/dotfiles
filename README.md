@@ -1,8 +1,9 @@
 # My dotfiles
 
 ## Installation
+```sh
 git clone https://github.com/parispjones/dotfiles.git && cd dotfiles && source
-bootstrap.sh
+bootstrap.sh```
 Then call
 ```bash
 ./.brew.sh
