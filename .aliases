@@ -5,6 +5,7 @@
 
 
 alias ..="cd .."
-alias --="cd -"
+alias -- -="cd -"
 
 alias g="git"
+alias dt="cd ~/Desktop"
