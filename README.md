@@ -7,8 +7,8 @@ git clone https://github.com/parispjones/dotfiles.git && cd dotfiles && source b
 Then call
 
 ```bash
-./.brew.sh
-./.mac.sh
+./brew.sh
+./mac.sh
 ```
 
 ### Inspired by
