@@ -1,12 +1,14 @@
 # My dotfiles
 
 ## Installation
-git clone https://github.com/parispjones/dotfiles.git && cd dotfiles && source
-bootstrap.sh
+```sh
+git clone https://github.com/parispjones/dotfiles.git && cd dotfiles && source bootstrap.sh
+```
 Then call
+
 ```bash
-./.brew.sh
-./.mac.sh
+./brew.sh
+./mac.sh
 ```
 
 ### Inspired by
