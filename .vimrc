@@ -1,6 +1,14 @@
 " Don't try to be vi compatible
 set nocompatible
 
+
+" Check to see if Vim-Plug exists first
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -90,6 +98,20 @@ imap jj <ESC>
 " Insert spaces below or above cursor in normal mode
 map <Enter> o<ESC>
 map <S-Enter> O<ESC>
+
+
+" Check to see if these directories exist
+if empty(glob('~/.vim/.undo'))
+  call mkdir($HOME . '/.vim/.undo/')
+endif
+
+if empty(glob('~/.vim/.backup'))
+  call mkdir($HOME . '/.vim/.backup/')
+endif
+
+if empty(glob('~/.vim/.swap'))
+  call mkdir($HOME . '/.vim/.swap/')
+endif
 
 set backup
 set undodir=~/.vim/.undo//
