@@ -9,3 +9,22 @@ alias -- -="cd -"
 
 alias g="git"
 alias dt="cd ~/Desktop"
+
+
+# super vim
+alias svim='sudo -E vim'
+
+# Make a directory and cd into it
+mkd () {
+	mkdir -p "$@" && cd "$_"
+}
+
+# Tmux shortcuts
+# Create new session (specify name)
+alias ts="tmux new-session -s" 
+# Attach to session
+alias taa="tmux a" 
+# Attach to session (specify name)
+alias ta="tmux attach -t" 
+# List running sessions
+alias tl="tmux list-sessions"
