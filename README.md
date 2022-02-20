@@ -1,5 +1,10 @@
 # My dotfiles
 
+# TODO
+- [ ] Check whether shell is `zsh` or `bash` and run the appropriate .rc file
+- [ ] Probably just remove the MacOS specific stuff
+
+
 ## Installation
 ```sh
 git clone https://github.com/parispjones/dotfiles.git && cd dotfiles && source bootstrap.sh
