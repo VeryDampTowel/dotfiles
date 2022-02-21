@@ -45,6 +45,9 @@ set noshowmode
 " Blink cursor on error instead of beeping (grr)
 set visualbell
 
+" Enable mouse scrolling
+set mouse=a
+
 " Whitespace
 set wrap
 set textwidth=79
