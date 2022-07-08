@@ -26,7 +26,7 @@ Plug 'junegunn/limelight.vim'
 
 Plug 'morhetz/gruvbox'
 
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
