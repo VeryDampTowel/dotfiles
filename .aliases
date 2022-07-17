@@ -21,13 +21,13 @@ alias howami="curl https://ipecho.net/plain"
 # Tmux shortcuts
 # All of these are handled via tmux ZSH plugin
 # Create new session (specify name)
-# alias ts="tmux new-session -s" 
+alias ts="tmux new-session -s" 
 # Attach to session
 alias taa="tmux a" 
 # Attach to session (specify name)
-# alias ta="tmux attach -t" 
+alias ta="tmux attach -t" 
 # List running sessions
-# alias tl="tmux list-sessions"
+alias tl="tmux list-sessions"
 
 # Make things colorful
 alias ls='ls --color=auto'
