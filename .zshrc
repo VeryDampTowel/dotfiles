@@ -1,14 +1,6 @@
-# If ZPlug ZSH manager is not installed, then install it
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
-fi
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
-else
-  export EDITOR='mvim'
 fi
 
 # Useful configs stolen from Kali defaults
@@ -28,48 +20,33 @@ fi
 # Aliases
 source ~/.aliases
 
-# ------ ZPlug -------
-source ~/.zplug/init.zsh
+# Plugins
+zshConfigs=$HOME/.config/zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "MichaelAquilina/zsh-you-should-use", from:github
+# if my configs don't exist then download them
+# TODO add function to check for updates
+# TODO this will not work if the directory exists
+# and configs are not present
 
-zplug "plugins/git",   from:oh-my-zsh
-zplug "plugins/zsh-autosuggestions",   from:oh-my-zsh
-zplug "plugins/tmux",   from:oh-my-zsh
+if [ ! -d $zshConfigs ]; then
+  mkdir -p "$zshConfigs/plugins"
+  mkdir -p "$zshConfigs/themes"
 
-# Grab the ARM Macbook version or the x64 Linux version
-# if [[ $OSTYPE == "darwin"* ]]; then
-#   zplug "junegunn/fzf", \
-#     from:gh-r, \
-#     as:command, \
-#     use:"*darwin*arm64*"
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$zshConfigs/plugins/zsh-autosuggestions"
+  
+  git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$zshConfigs/plugins/zsh-you-should-use"
 
-# elif [[ $OSTYPE == "linux"* ]]; then
-#   zplug "junegunn/fzf", \
-#     from:gh-r, \
-#     as:command, \
-#     rename-to:fzf, \
-#     use:"*linux*amd64*"
-# else
-#   echo "---------------------------------------"
-#   echo "Something is wrong with the fzf if statement"
-#   echo "---------------------------------------"
-# fi
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$zshConfigs/plugins/zsh-syntax-highlighting"
 
-zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
-
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-# Auto install new plugins
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$zshConfigs/themes/powerlevel10k"
 fi
 
-zplug load
+source "$zshConfigs/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$zshConfigs/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
+source "$zshConfigs/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+source "$zshConfigs/themes/.p10k.zsh"
+source "$zshConfigs/themes/powerlevel10k/powerlevel10k.zsh-theme"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
