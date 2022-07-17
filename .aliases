@@ -1,10 +1,11 @@
-#!/usr/bin/env bash
-
-# Aliases to make the commandline a little easier...
-# Inspiration from https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
-
-
 alias ..="cd .."
+alias ll="ls -l"
+alias la="ls -A"
+
+
+# Works with the bare git repo of dotfiles
+# https://www.atlassian.com/git/tutorials/dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # super vim
 alias svim='sudo -E vim'
@@ -13,6 +14,9 @@ alias svim='sudo -E vim'
 mkd () {
 	mkdir -p "$@" && cd "$_"
 }
+
+# Print public IP
+alias howami="curl https://ipecho.net/plain"
 
 # Tmux shortcuts
 # All of these are handled via tmux ZSH plugin
@@ -24,3 +28,8 @@ alias taa="tmux a"
 # alias ta="tmux attach -t" 
 # List running sessions
 # alias tl="tmux list-sessions"
+
+# Make things colorful
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
