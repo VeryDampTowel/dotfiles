@@ -21,32 +21,25 @@ fi
 source ~/.aliases
 
 # Plugins
-zshConfigs=$HOME/.config/zsh
+export ZDOTDIR=~/.config/zsh
 
-# if my configs don't exist then download them
-# TODO add function to check for updates
-# TODO this will not work if the directory exists
-# and configs are not present
-
-if [ ! -d $zshConfigs ]; then
-  mkdir -p "$zshConfigs/plugins"
-  mkdir -p "$zshConfigs/themes"
-
-  git clone https://github.com/zsh-users/zsh-autosuggestions "$zshConfigs/plugins/zsh-autosuggestions"
-  
-  git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$zshConfigs/plugins/zsh-you-should-use"
-
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$zshConfigs/plugins/zsh-syntax-highlighting"
-
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$zshConfigs/themes/powerlevel10k"
+# Download plugin manager if we don't have it
+if ! [[ -e $ZDOTDIR/antidote ]]
+then
+    git clone https://github.com/mattmc3/antidote.git $ZDOTDIR/antidote
 fi
 
-source "$zshConfigs/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$zshConfigs/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
-source "$zshConfigs/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# List of plugins found in ${ZDOTDIR:-~}/zsh_plugins.txt
+source ${ZDOTDIR:-~}/antidote/antidote.zsh
+antidote load
 
-source "$zshConfigs/themes/.p10k.zsh"
-source "$zshConfigs/themes/powerlevel10k/powerlevel10k.zsh-theme"
+# Enable case insensitive tab-completion
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+autoload -Uz compinit && compinit
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Load powerlevel10k prompt
+autoload -Uz promptinit && promptinit && prompt powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# iTerm2 Integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

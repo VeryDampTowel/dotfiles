@@ -1,7 +1,7 @@
 alias ..="cd .."
 alias ll="ls -l"
 alias la="ls -A"
-
+source ~/.sshAliases
 
 # Works with the bare git repo of dotfiles
 # https://www.atlassian.com/git/tutorials/dotfiles
