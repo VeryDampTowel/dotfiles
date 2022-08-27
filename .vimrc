@@ -1,6 +1,8 @@
 " Don't try to be vi compatible
 set nocompatible
 
+" Fixes kitty terminal background changing on scroll
+let &t_ut=''
 
 " Check to see if Vim-Plug exists first
 if empty(glob('~/.vim/autoload/plug.vim'))

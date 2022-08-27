@@ -1,0 +1,8 @@
+# Plugins to load
+
+zsh-users/zsh-autosuggestions
+MichaelAquilina/zsh-you-should-use
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+
+romkatv/powerlevel10k kind:fpath
