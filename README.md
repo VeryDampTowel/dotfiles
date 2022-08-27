@@ -2,7 +2,7 @@
 How to grab this repo:
 WARNING: WILL PROBABLY OVERWRITE YOUR CONFIGS
 ```
-git clone --bare <git-repo-url> $HOME/.dotfiles
+git clone --bare https://github.com/parispjones/dotfiles.git $HOME/.dotfiles
 source ~/.zshrc
 config config --local status.showUntrackedFiles no
 ```
