@@ -19,20 +19,19 @@ mkd () {
 alias howami="curl https://ipecho.net/plain"
 
 # Tmux shortcuts
-# All of these are handled via tmux ZSH plugin
+# All of these are handled via ZSH plugin
 # Create new session (specify name)
-alias ts="tmux new-session -s" 
+# alias ts="tmux new-session -s" 
 # Attach to session
-alias taa="tmux a" 
+# alias taa="tmux a" 
 # Attach to session (specify name)
-alias ta="tmux attach -t" 
+# alias ta="tmux attach -t" 
 # List running sessions
-alias tl="tmux list-sessions"
+# alias tl="tmux list-sessions"
 
 # Make things colorful
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias diff='diff --color=auto'
 
 # Check top 10 highest memory hogging apps
 alias mem="ps -eo pid,cmd,%mem,%cpu --sort=%mem | head"

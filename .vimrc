@@ -26,7 +26,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 Plug 'dense-analysis/ale'
 
@@ -127,8 +127,8 @@ set directory=~/.vim/.swap//
 set t_Co=256
 set background=dark
 
-colorscheme gruvbox
-let g:airline_theme='badwolf'
+colorscheme dracula
+let g:airline_theme='dracula'
 let g:airline#extensions#ale#enabled = 1
 let g:airline_section_y = 0
 
