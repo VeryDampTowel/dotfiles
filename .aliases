@@ -33,3 +33,6 @@ alias tl="tmux list-sessions"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+
+# Check top 10 highest memory hogging apps
+alias mem="ps -eo pid,cmd,%mem,%cpu --sort=%mem | head"

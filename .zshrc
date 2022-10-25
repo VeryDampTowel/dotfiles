@@ -40,3 +40,4 @@ autoload -Uz compinit && compinit
 # Load powerlevel10k prompt
 autoload -Uz promptinit && promptinit && prompt powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH=$PATH:/Users/parispjones/.spicetify
