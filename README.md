@@ -1,9 +1,9 @@
 # My dotfiles
-The following will place the git repo in `$HOME/.cfg`, create `.config-backup` which contains any dotfiles with identical names, then copy my dotfiles to `$HOME`
+The following will place the git repo in `$HOME/.dotfiles`, create `.config-backup` which contains any dotfiles with identical names, then copy my dotfiles to `$HOME`
 
 ```shell
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-git clone --bare https://github.com/parispjones/dotfiles $HOME/.cfg
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+git clone --bare https://github.com/parispjones/dotfiles $HOME/.dotfiles
 mkdir -p .config-backup
 config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
 config checkout
