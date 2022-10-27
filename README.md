@@ -31,9 +31,11 @@ tl -> List running sessions
 Recommend reading the documentation as there's a lot of fun here, but here are some frequently used options
 
 `CTRL + R` -> Fuzzy search command history
+
 `CTRL + T` -> Fuzzy search files/directories
 
 `fzf --preview 'cat {}'` will open a separate window to show the contents of files as you search them in real time
+
 `vim **<TAB>` will fuzzy search files then open in vim
 
 ### [ZSH-VI-Mode](https://github.com/jeffreytse/zsh-vi-mode)
@@ -53,13 +55,13 @@ va"  -> Select text object including "
 
 If you prefer to use a standard vim session to edit commands, `vv` in Normal mode can help.
 
-## Tools to consider adding
+#### Tools to consider adding
 - [ ] https://github.com/Peltoche/lsd
 - [ ] https://github.com/sharkdp/bat
 - [ ] https://github.com/cheat/cheat
 - [ ] https://github.com/ibraheemdev/modern-unix
 
-## Great dotfiles references
+#### Great dotfiles references
 - https://github.com/georgijd/dotfiles
 - https://github.com/anandpiyer/.dotfiles/tree/master/.dotfiles
 - https://www.atlassian.com/git/tutorials/dotfiles
