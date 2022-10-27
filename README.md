@@ -10,7 +10,11 @@ config checkout
 config config --local status.showUntrackedFiles no
 
 source ~/.zshrc
+
+# Necessary for tmux to find configs
+ln -s $HOME/.zshrc $ZDOTDIR/.zshrc
 ```
+
 
 Hint: Use alias `config` command to interact with the git repo locally
 
@@ -25,6 +29,7 @@ tl -> List running sessions
 
 ### [fzf](https://github.com/jeffreytse/zsh-vi-mode)
 Recommend reading the documentation as there's a lot of fun here, but here are some frequently used options
+
 `CTRL + R` -> Fuzzy search command history
 `CTRL + T` -> Fuzzy search files/directories
 
