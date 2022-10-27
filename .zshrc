@@ -52,6 +52,9 @@ zstyle ':antidote:bundle' use-friendly-names 'yes'
 # Source and load plugins found in ${ZDOTDIR}/.zsh_plugins.txt
 source ${ZDOTDIR:-~}/antidote/antidote.zsh
 
+# Load the plugins
+antidote load
+
 # Install fzf binary if not found
 if ! [[ -e "$(antidote home)/junegunn/fzf/bin/fzf" ]]
 then
@@ -62,8 +65,6 @@ fi
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit
 
-# Load the plugins
-antidote load
 
 # Restore FZF Key bindings
 zvm_after_init() {
