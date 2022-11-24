@@ -1,12 +1,26 @@
-alias dc="docker-compose"
+#!/usr/bin/env zsh
+
+# Aliases to make the commandline a little easier...
+# Inspiration from https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+
+
 alias ..="cd .."
-alias ll='ls -lh --color=auto
-alias la='ls -lha --color=auto
-alias l='ls -lh --color=auto'
+alias -- -="cd -"
+
+alias g="git"
+alias rd="rmdir"
+alias less="less --mouse"
+alias ll="ls -lh --color=auto"
+alias lsa="ls -lha --color=auto"
+alias la="ls -lha --color=auto"
+alias l="ls -lh --color=auto"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias diff="diff --color"
 
 # Works with the bare git repo of dotfiles
 # https://www.atlassian.com/git/tutorials/dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # super vim
 alias svim='sudo -E vim'
@@ -16,11 +30,33 @@ mkd () {
 	mkdir -p "$@" && cd "$_"
 }
 
-# Print public IP
+# Tmux shortcuts
+# Create new session (specify name)
+# alias ts="tmux new-session -s" 
+# Attach to session
+alias taa="tmux a" 
+# Attach to session (specify name)
+# alias ta="tmux attach -t" 
+# List running sessions
+# alias tl="tmux list-sessions"
+
+# Delete history
+erase_history () { local HISTSIZE=0; }
+
+# Because who will remember pwsh
+alias powershell="pwsh"
+
+# When you forget your public IP
 alias howami="curl https://ipecho.net/plain"
 
+# Open folders on the GUI
+alias open="xdg-open"
+
+# Following only works in kitty terminal
+alias icat="kitty +kitten icat"
+
 # Check top 10 highest memory hogging apps
-alias mem="ps -eo pid,cmd,%mem,%cpu --sort=%mem | head"
+alias mem="ps -eo pid,cmd,%mem,%cpu --sort=-%mem | head"
 
 # Get File Size of current directory's sub dir
-alias howbig='du -d1 -h ./ 2> /dev/null | sort -rn'
+alias howbig="du -d1 -h ./ 2> /dev/null | sort -rn"
