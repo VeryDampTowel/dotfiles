@@ -28,7 +28,7 @@ alias svim='sudo -E vim'
 
 # Make a directory and cd into it
 mkd () {
-	mkdir -p "$@" && cd "$_"
+  mkdir -p "$@" && cd "$_"
 }
 
 # Tmux shortcuts
