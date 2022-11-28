@@ -1,6 +1,8 @@
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
+else
+  export EDITOR='mvim'
 fi
 
 # Useful configs stolen from Kali defaults
@@ -14,7 +16,7 @@ bindkey '^U' backward-kill-line   # ctrl + U
 
 # Needed on Mac for brew and friends
 if [[ $OSTYPE == "darwin"* ]]; then
-  export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$PATH
+	export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$PATH
   export PATH=$PATH:$HOME/.spicetify
 fi
 
@@ -40,40 +42,51 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 # Aliases
 source ~/.aliases
 
-# Define config folder
-export ZDOTDIR=~/.config/zsh
+# ------ ZPlug Start -------
 
-# Download plugin manager if we don't have it
-if ! [[ -e $ZDOTDIR/antidote ]]
-then
-    git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/antidote
+# If ZPlug ZSH manager is not installed, then install it
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
 fi
 
-# Make plugin folder names pretty
-zstyle ':antidote:bundle' use-friendly-names 'yes'
+source ~/.zplug/init.zsh
 
-# Source and load plugins found in ${ZDOTDIR}/.zsh_plugins.txt
-source ${ZDOTDIR:-~}/antidote/antidote.zsh
+zplug "belak/zsh-utils",  use:history
+zplug "plugins/zsh-autosuggestions",   from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# Install fzf binary if not found
-if ! [[ -e "$(antidote home)/junegunn/fzf/bin/fzf" ]]
-then
-  antidote load
-  "$(antidote home)/junegunn/fzf/install" --bin
+zplug "jeffreytse/zsh-vi-mode"
+zplug "MichaelAquilina/zsh-you-should-use", from:github
+
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/tmux",   from:oh-my-zsh
+
+zplug "junegunn/fzf", \
+  hook-build:"./install --bin && ln -sr bin/fzf $ZPLUG_HOME/bin", \
+  use:"shell/*.zsh"
+
+# Auto install new plugins
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
+
+zplug load
+
+# ------ ZPlug End -------
 
 # Enable case insensitive tab-completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit && compinit
 
-# Load the plugins
-antidote load
-
 # Restore FZF Key bindings
 zvm_after_init() {
-  source "$(antidote home)/junegunn/fzf/shell/completion.zsh"
-  source "$(antidote home)/junegunn/fzf/shell/key-bindings.zsh"
+  source "$ZPLUG_HOME/repos/junegunn/fzf/shell/completion.zsh"
+  source "$ZPLUG_HOME/repos/junegunn/fzf/shell/key-bindings.zsh"
 }
 
 # Load starship prompt
