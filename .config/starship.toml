@@ -12,9 +12,6 @@ vimcmd_symbol = "[❮](bold #50fa7b)"
 [cmd_duration]
 style = "bold #f1fa8c"
 
-[directory]
-style = "bold #50fa7b"
-
 [git_branch]
 style = "bold #ff79c6"
 
