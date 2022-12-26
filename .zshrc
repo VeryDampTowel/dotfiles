@@ -6,6 +6,7 @@ fi
 # Useful configs stolen from Kali defaults
 setopt autocd                     # Change direectory just by typing its name
 setopt notify                     # report the status of background jobs immediately
+setopt sharehistory               # Share history with Tmux and friends
 bindkey '^[[1;5C' forward-word    # ctrl + ->
 bindkey '^[[1;5D' backward-word   # ctrl + <-
 bindkey '^[[H' beginning-of-line  # home
