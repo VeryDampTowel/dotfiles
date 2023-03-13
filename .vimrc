@@ -39,7 +39,7 @@ let mapleader = " "
 set modelines=0
 
 " Show line numbers
-set number
+" set number
 
 " Disable default mode indicator (for airline)
 set noshowmode
