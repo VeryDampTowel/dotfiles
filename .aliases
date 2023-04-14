@@ -60,4 +60,4 @@ alias icat="kitty +kitten icat"
 alias mem="ps -eo pid,cmd,%mem,%cpu --sort=-%mem | head"
 
 # Get File Size of current directory's sub dir
-alias howbig="du -d1 -h ./ 2> /dev/null | sort -rn"
+alias howbig="du -d1 -h ./ 2> /dev/null | sort -rh"
