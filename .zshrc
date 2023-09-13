@@ -84,5 +84,14 @@ zvm_after_init() {
   source "$(antidote home)/junegunn/fzf/shell/key-bindings.zsh"
 }
 
+# Makes CTRL+R with fzf more enjoyable
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window down:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -sel c)+abort'
+  --height 60%
+  --color header:italic
+  --header 'CTRL-Y to copy ; CTRL-/ for preview window'"
+
 # Load starship prompt
 eval "$(starship init zsh)"
