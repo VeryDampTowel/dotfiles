@@ -71,6 +71,13 @@ autoload -Uz compinit && compinit
 # Load the plugins
 antidote load
 
+# Allows zsh-vi to yank to clipboard
+zvm_vi_yank () {
+	zvm_yank
+	printf %s "${CUTBUFFER}" | xclip -sel c
+	zvm_exit_visual_mode
+}
+
 # Restore FZF Key bindings
 zvm_after_init() {
   source "$(antidote home)/junegunn/fzf/shell/completion.zsh"
