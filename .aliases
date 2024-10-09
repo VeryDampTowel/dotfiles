@@ -6,6 +6,8 @@
 alias dc="docker compose"
 
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias -- -="cd -"
 
 alias g="git"
@@ -30,6 +32,10 @@ alias svim='sudo -E vim'
 mkd () {
 	mkdir -p "$@" && cd "$_"
 }
+
+# Grab things from GitHub
+alias gcloneseclist='git clone https://github.com/danielmiessler/SecLists.git'
+alias gcloneimpacket='git clone https://github.com/fortra/impacket.git'
 
 # Tmux shortcuts
 # Create new session (specify name)
