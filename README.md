@@ -1,22 +1,9 @@
 # My dotfiles
-The following will place the git repo in `$HOME/.dotfiles`, create `$HOME/.config-backup` and move any clashing files to avoid overwriting, then copy my dotfiles to `$HOME`.
 
 ```shell
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-git clone --bare https://github.com/parispjones/dotfiles $HOME/.dotfiles
-mkdir -p $HOME/.config-backup
-config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-config sparse-checkout set '/*' '!README.md'
-config config --local status.showUntrackedFiles no
-
-source ~/.zshrc
-
-# Necessary for tmux to find configs
-ln -s $HOME/.zshrc $ZDOTDIR/.zshrc
+cd dotfiles
+sh setup.sh
 ```
-
-
-Hint: Use alias `config` command to interact with the git repo locally
 
 ## Tips, Tricks, & Shortcuts
 ### Tmux
