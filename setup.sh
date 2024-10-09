@@ -7,7 +7,7 @@ if [ `id -u` -eq 0 ]; then
 fi
 
 # Make sure this script is called from within the directory
-if [ ! "$(basename "$PWD")" = "myconfigs" ] ; then echo "You gotta cd into the dir first because I said so." && echo "cd ~/myconfigs ; bash setup.sh" && exit ; fi
+if [ ! "$(basename "$PWD")" = "dotfiles" ] ; then echo "You gotta cd into the dir first because I said so." && echo "cd ~/dotfiles ; bash setup.sh" && exit ; fi
 
 echo "Installing dependencies"
 sudo apt install xclip vim git zsh curl python3-pip tmux -y
