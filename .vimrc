@@ -27,8 +27,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
-
-Plug 'dense-analysis/ale'
+Plug 'rust-lang/rust.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -52,7 +53,7 @@ set mouse=a
 
 " Whitespace
 set wrap
-set textwidth=79
+"set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
@@ -129,16 +130,20 @@ set background=dark
 
 colorscheme dracula
 let g:airline_theme='dracula'
-let g:airline#extensions#ale#enabled = 1
 let g:airline_section_y = 0
+let g:airline#extensions#tabline#enabled = 1
 
-" ALE stuff
-let g:ale_fixers = {
-\   'python': ['isort'],
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" coc VIM stuff
+" AUTOCOMPLETION - Tab to accept/navigate suggestions
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" This gives you VSCode-like autocomplete: type something, suggestions appear,
+
+" Tab/Shift-Tab to navigate, Enter to accept
+" Navigate diagnostics (errors/warnings) - equivalent to ALE's previous/next
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 
 " Goyo with Limelight integration
 autocmd! User GoyoEnter Limelight
