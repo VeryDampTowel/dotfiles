@@ -1,7 +1,14 @@
 #!/usr/bin/env zsh
-
-# Aliases to make the commandline a little easier...
 # Inspiration from https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+
+# New Stuff I'm Trying
+# This will use fzf to search the current directory and sub folders for a file
+# then open it in VIM.
+# We can just do hx or hx <search term>. If we're in tmux, we'll have a pop-up preview window like that.
+# We can scroll in the preview with mouse or with ctrl+h or l
+hx () {
+  fzf --query="$1" -0 --tmux center --layout=reverse --preview="bat --color=always {}" --bind 'enter:become(vim {})' --preview-window 'up,70%,~3' --bind 'ctrl-h:preview-up' --bind 'ctrl-l:preview-down'
+}
 
 alias dc="docker compose"
 
