@@ -1,0 +1,76 @@
+#!/usr/bin/env zsh
+# Inspiration from https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+
+# New Stuff I'm Trying
+# This will use fzf to search the current directory and sub folders for a file
+# then open it in VIM.
+# We can just do hx or hx <search term>. If we're in tmux, we'll have a pop-up preview window like that.
+# We can scroll in the preview with mouse or with ctrl+h or l
+hx () {
+  fzf --query="$1" -0 --tmux center --layout=reverse --preview="bat --color=always {}" --bind 'enter:become(vim {})' --preview-window 'up,70%,~3' --bind 'ctrl-h:preview-up' --bind 'ctrl-l:preview-down'
+}
+
+alias dc="docker compose"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias -- -="cd -"
+
+alias g="git"
+alias rd="rmdir"
+alias less="less --mouse"
+alias ll="ls -lh --color=auto"
+alias lsa="ls -lha --color=auto"
+alias la="ls -lha --color=auto"
+alias l="ls -lh --color=auto"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias diff="diff --color"
+
+# Works with the bare git repo of dotfiles
+# https://www.atlassian.com/git/tutorials/dotfiles
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+# super vim
+alias svim='sudo -E vim'
+
+# Make a directory and cd into it
+mkd () {
+	mkdir -p "$@" && cd "$_"
+}
+
+# Grab things from GitHub
+alias gcloneseclist='git clone https://github.com/danielmiessler/SecLists.git'
+alias gcloneimpacket='git clone https://github.com/fortra/impacket.git'
+
+# Tmux shortcuts
+# Create new session (specify name)
+# alias ts="tmux new-session -s" 
+# Attach to session
+alias taa="tmux a" 
+# Attach to session (specify name)
+# alias ta="tmux attach -t" 
+# List running sessions
+# alias tl="tmux list-sessions"
+
+# Delete history
+erase_history () { local HISTSIZE=0; }
+
+# Because who will remember pwsh
+alias powershell="pwsh"
+
+# When you forget your public IP
+alias howami="curl https://ipecho.net/plain"
+
+# Open folders on the GUI
+alias open="xdg-open"
+
+# Following only works in kitty terminal
+alias icat="kitty +kitten icat"
+
+# Check top 10 highest memory hogging apps
+alias mem="ps -eo pid,cmd,%mem,%cpu --sort=-%mem | head"
+
+# Get File Size of current directory's sub dir
+alias howbig="du -d1 -h ./ 2> /dev/null | sort -rh"
